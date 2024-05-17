@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    username: test
+    password: test
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        hbm2ddl:
+          auto: validate
+        show_sql: true
+logging:
+  level:
+    root: info
+    org.hibernate.type.descriptor.JdbcBindingLogging: trace
+    org.hibernate.orm.jdbc.bind: trace
+
+

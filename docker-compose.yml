@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+
+  coin_app:
+    image: coinapp:dev
+    container_name: coin_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      coin_db:
+        condition: service_healthy
+    links:
+      - coin_db
+    environment:
+      WAIT_HOSTS: coin_db:5432
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:postgresql://coin_db:5432/coin
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SPRING_PARENT_DIRECTORY: /
+      APP_PORT: ${APP_PORT}
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    volumes:
+      - ${HOST_PARENT_DIRECTORY}:/coin
+
+  coin_db:
+    image: postgres
+    container_name: coin_db
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: coin
+    ports:
+      - "${EXTERNAL_DB_PORT}:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d coin" ]
+      interval: 8s
+      timeout: 4s
+      retries: 4
