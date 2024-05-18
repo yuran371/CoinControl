@@ -1,15 +1,19 @@
 package com.mergeteam.coincontrol.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
-import java.util.Objects;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
 @Data
+@EqualsAndHashCode(of = "id")
 @AllArgsConstructor
 @NoArgsConstructor
 @Inheritance
@@ -19,10 +23,10 @@ public abstract class Transaction implements BaseEntity<UUID> {
     @Column(name = "id")
     @UuidGenerator
     private UUID id;
-    @Column(name = "wallet_id")
+    @Column(name = "wallet_id") //TODO Add @ManyToOne
     private UUID walletId;
     @Column(name = "amount")
     private BigDecimal amount;
     @Column(name = "date")
-    private Object date;
+    private OffsetDateTime date;
 }
