@@ -26,7 +26,7 @@ public class IncomeTransaction extends Transaction {
     private IncomeCategory category;
 
     @Builder(access = AccessLevel.PRIVATE)
-    public IncomeTransaction(UUID id, UUID walletId, BigDecimal amount, OffsetDateTime date, IncomeCategory category) {
+    public IncomeTransaction(UUID id, Wallet walletId, BigDecimal amount, OffsetDateTime date, IncomeCategory category) {
         super(id, walletId, amount, date);
         this.category = category;
     }

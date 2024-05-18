@@ -1,12 +1,14 @@
 package com.mergeteam.coincontrol.service;
 
-import com.mergeteam.coincontrol.dto.WalletDto;
+import com.mergeteam.coincontrol.entity.Transaction;
 import com.mergeteam.coincontrol.entity.Wallet;
-import com.mergeteam.coincontrol.repository.ExpenseTransactionRepository;
-import com.mergeteam.coincontrol.repository.IncomeTransactionRepository;
+import com.mergeteam.coincontrol.repository.TransactionRepository;
 import com.mergeteam.coincontrol.repository.WalletRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
