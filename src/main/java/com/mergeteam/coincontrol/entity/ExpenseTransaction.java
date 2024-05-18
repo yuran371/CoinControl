@@ -22,7 +22,7 @@ public class ExpenseTransaction extends Transaction {
     private ExpenseCategory category;
 
     @Builder(access = AccessLevel.PRIVATE)
-    public ExpenseTransaction(UUID id, UUID walletId, BigDecimal amount, OffsetDateTime date, ExpenseCategory category) {
+    public ExpenseTransaction(UUID id, Wallet walletId, BigDecimal amount, OffsetDateTime date, ExpenseCategory category) {
         super(id, walletId, amount, date);
         this.category = category;
     }
