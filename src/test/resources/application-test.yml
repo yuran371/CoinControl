@@ -6,8 +6,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        hbm2ddl:
-          auto: validate
         show_sql: true
 logging:
   level:

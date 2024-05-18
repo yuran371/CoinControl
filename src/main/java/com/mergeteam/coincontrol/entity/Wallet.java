@@ -12,6 +12,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
+@Table(catalog = "coin", schema = "coin_repository", name = "wallet")
 @Data
 @Builder
 @AllArgsConstructor
@@ -31,4 +32,5 @@ public class Wallet {
 
     @Column(name = "balance")
     private BigDecimal balance;
+
 }

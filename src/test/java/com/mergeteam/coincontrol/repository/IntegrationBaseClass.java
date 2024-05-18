@@ -4,11 +4,13 @@ import com.mergeteam.coincontrol.utils.IT;
 import org.junit.jupiter.api.BeforeAll;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.PostgreSQLContainer;
 
-import java.time.LocalDateTime;
-
 @IT
+@Sql({
+        "classpath:base-ddl.sql"
+})
 public abstract class IntegrationBaseClass {
 
 

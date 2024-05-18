@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "user")
+@Table(name = "user", catalog = "coin", schema = "coin_repository")
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
@@ -24,6 +24,8 @@ public class User {
     private UUID id;
     @Column(name = "email")
     private String email;
+    @Column(name = "name")
+    private String name;
     @Column(name = "password")
     private String password;
     @Column(name = "avatar_path")

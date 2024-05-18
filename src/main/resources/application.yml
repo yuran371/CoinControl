@@ -6,3 +6,5 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://${DB_HOST:localhost}:${EXTERNAL_DB_PORT:5432}/coin
+  jpa:
+    show-sql: true

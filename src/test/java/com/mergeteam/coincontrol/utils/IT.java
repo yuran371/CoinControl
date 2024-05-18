@@ -3,6 +3,7 @@ package com.mergeteam.coincontrol.utils;
 import com.mergeteam.coincontrol.CoinControlApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.annotation.ElementType;

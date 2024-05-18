@@ -11,6 +11,7 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
+@Table(catalog = "coin", schema = "coin_repository", name = "transaction")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
