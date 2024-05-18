@@ -1,17 +1,19 @@
 package com.mergeteam.coincontrol.dto;
 
+import com.mergeteam.coincontrol.entity.enums.Role;
 import lombok.Builder;
 import lombok.Value;
 
-import java.math.BigDecimal;
 import java.util.UUID;
 
 @Value
 @Builder
-public class WalletDto {
+public class ReadUserDto {
 
     UUID id;
+    String email;
     String name;
-    BigDecimal balance;
+    String avatarPath;
+    Role role;
 
 }
