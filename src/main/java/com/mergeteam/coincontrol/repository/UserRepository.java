@@ -14,8 +14,8 @@ import java.util.UUID;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
-    Slice<User> findAllBy(Pageable pageable);
 
     @Transactional(readOnly = true)
     Optional<User> findByEmail(String email) throws DataAccessException;
+
 }

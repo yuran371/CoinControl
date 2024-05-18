@@ -2,7 +2,7 @@ package com.mergeteam.coincontrol.service;
 
 import com.mergeteam.coincontrol.entity.Transaction;
 import com.mergeteam.coincontrol.entity.Wallet;
-import com.mergeteam.coincontrol.repository.TransactionRepository;
+//import com.mergeteam.coincontrol.repository.TransactionRepository;
 import com.mergeteam.coincontrol.repository.WalletRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

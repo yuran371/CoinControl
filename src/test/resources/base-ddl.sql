@@ -1,6 +1,6 @@
-INSERT INTO coin_repository."user" (id, email, password, avatar_path, name)
-VALUES ('e0ee31f6-6c9b-4987-8fba-246b059b3bee', 'user1@email.ru', 'fawfafw12332gsff', '/default', 'imyaCheloveka'),
-       ('fbd42fb4-f0f0-498a-90d0-92e221bc094d', 'user2@google.com', 'FHYSGFH3231DSFsaqew', '/my-avatar', 'nechelovecheskoeImya');
+INSERT INTO coin_repository."user" (id, email, password, avatar_path, name, role)
+VALUES ('e0ee31f6-6c9b-4987-8fba-246b059b3bee', 'user1@email.ru', 'fawfafw12332gsff', '/default', 'imyaCheloveka', 'ADMIN'),
+       ('fbd42fb4-f0f0-498a-90d0-92e221bc094d', 'user2@google.com', 'FHYSGFH3231DSFsaqew', '/my-avatar', 'nechelovecheskoeImya', 'USER');
 
 INSERT INTO coin_repository.wallet (id, user_id, name, balance)
 VALUES ('74dd2764-c0cc-4195-a906-b8edd7804c03', 'e0ee31f6-6c9b-4987-8fba-246b059b3bee', 'Main wallet', 1000),
