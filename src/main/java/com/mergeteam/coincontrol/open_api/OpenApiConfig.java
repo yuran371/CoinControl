@@ -1,4 +1,4 @@
-package tech.helen.bookshop.open_api;
+package com.mergeteam.coincontrol.open_api;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
