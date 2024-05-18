@@ -1,5 +1,6 @@
 package com.mergeteam.coincontrol;
 
+import com.mergeteam.coincontrol.entity.ExpenseTransaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
