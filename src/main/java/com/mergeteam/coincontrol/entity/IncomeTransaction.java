@@ -25,7 +25,7 @@ public class IncomeTransaction extends Transaction {
     @Enumerated(EnumType.STRING)
     private IncomeCategory category;
 
-    @Builder(access = AccessLevel.PRIVATE)
+    @Builder
     public IncomeTransaction(UUID id, Wallet walletId, BigDecimal amount, OffsetDateTime date, IncomeCategory category) {
         super(id, walletId, amount, date);
         this.category = category;

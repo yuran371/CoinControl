@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -15,4 +16,6 @@ public interface WalletRepository extends JpaRepository<Wallet, UUID> {
     @Query("SELECT w.user FROM Wallet w WHERE w.id = :walletId")
     User findUserByWalletId(@Param("walletId") UUID walletId);
 
+
+    List<Wallet> findAllByUserId(UUID userId);
 }

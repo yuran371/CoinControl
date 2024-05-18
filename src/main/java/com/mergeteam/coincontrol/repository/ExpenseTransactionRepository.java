@@ -13,4 +13,5 @@ public interface ExpenseTransactionRepository extends JpaRepository<ExpenseTrans
 
     @Query("select e from ExpenseTransaction e join fetch e.walletId where e.walletId.id in :walletIds")
     Page<ExpenseTransaction> findAllByWalletsId(List<UUID> walletIds, Pageable pageable);
+
 }
