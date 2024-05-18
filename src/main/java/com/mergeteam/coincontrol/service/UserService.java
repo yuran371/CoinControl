@@ -38,18 +38,18 @@ public class UserService implements UserDetailsService {
         userRepository.deleteById(id);
     }
 
-    public Page<WalletDto> getWalletsForUser(UUID id, Pageable pageable) {
-        User user = userRepository.findById(id)
-                .orElseThrow();
-        List<WalletDto> walletDtos = user.getWallets()
-                .stream()
-                .map(wallet -> new WalletDto(wallet.getId(), wallet.getName(), wallet.getBalance()))
-                .collect(Collectors.toList());
-        long offset = pageable.getOffset();
-        long size = Math.min(pageable.getOffset() + pageable.getPageSize(), walletDtos.size());
-        List<WalletDto> sublist = walletDtos.subList((int) offset, (int) size);
-        return new PageImpl<>(sublist, pageable, walletDtos.size());
-    }
+//    public Page<WalletDto> getWalletsForUser(UUID id, Pageable pageable) {
+//        User user = userRepository.findById(id)
+//                .orElseThrow();
+//        List<WalletDto> walletDtos = user.getWallets()
+//                .stream()
+//                .map(wallet -> new WalletDto(wallet.getId(), wallet.getName(), wallet.getBalance()))
+//                .collect(Collectors.toList());
+//        long offset = pageable.getOffset();
+//        long size = Math.min(pageable.getOffset() + pageable.getPageSize(), walletDtos.size());
+//        List<WalletDto> sublist = walletDtos.subList((int) offset, (int) size);
+//        return new PageImpl<>(sublist, pageable, walletDtos.size());
+//    }
 
     public User updateUser(UUID id, UpdateUserDto userDto) {
         Optional<User> existingUser = userRepository.findById(id);

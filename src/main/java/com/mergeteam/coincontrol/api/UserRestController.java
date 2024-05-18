@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @RestController
@@ -17,17 +18,15 @@ import java.util.UUID;
 public class UserRestController {
     private UserService userService;
 
-    @GetMapping("/{id}/wallets")
-    public Page<WalletDto> getAllWalletsByUserId(@PathVariable UUID id, Pageable pageable) {
-        return userService.getWalletsForUser(id, pageable);
-    }
+//    @GetMapping("/{id}/wallets")
+//    public Page<WalletDto> getAllWalletsByUserId(@PathVariable UUID id, Pageable pageable) {
+//        return userService.getWalletsForUser(id, pageable);
+//    }
 
     @PutMapping("/{id}")
     public User updateUser(@PathVariable UUID id, UpdateUserDto userDto) {
         return userService.updateUser(id, userDto);
     }
-
-
 
 //    @GetMapping("/{id}/wallets")
 

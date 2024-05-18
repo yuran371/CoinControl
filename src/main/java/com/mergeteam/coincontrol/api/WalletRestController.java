@@ -1,12 +1,18 @@
 package com.mergeteam.coincontrol.api;
 
 import com.mergeteam.coincontrol.dto.WalletDto;
+import com.mergeteam.coincontrol.entity.User;
 import com.mergeteam.coincontrol.entity.Wallet;
 import com.mergeteam.coincontrol.service.WalletService;
-import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/wallet")
@@ -17,8 +23,18 @@ public class WalletRestController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.OK)
-    Wallet createWallet(@RequestBody WalletDto walletDto) {
-        return walletService.createWallet(walletDto);
+    private Wallet createWallet(@RequestBody WalletDto walletDto, @AuthenticationPrincipal UserDetails user) {
+        return walletService.createWallet(walletDto, user);
+    }
+
+    @DeleteMapping("/{walletId}")
+    @ResponseStatus(HttpStatus.OK)
+    private Optional<Wallet> deleteWallet(@RequestParam UUID walletId) {
+        return walletService.deleteWalletByWalletId(walletId);
+    }
+    @GetMapping("/balance/{walletId}")
+    public BigDecimal getBalance(@PathVariable UUID walletId) {
+        return walletService.getBalance(walletId);
     }
 }
 
