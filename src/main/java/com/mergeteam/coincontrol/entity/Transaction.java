@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
@@ -25,5 +26,5 @@ public abstract class Transaction implements BaseEntity<UUID> {
     @Column(name = "amount")
     private BigDecimal amount;
     @Column(name = "date")
-    private Object date;
+    private OffsetDateTime date;
 }

@@ -5,9 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -15,10 +17,10 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Wallet {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private Object id;
+    @UuidGenerator
+    private UUID id;
 
     @ManyToOne
     @JoinColumn(name="user_id")
