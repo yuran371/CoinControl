@@ -3,6 +3,7 @@ package com.mergeteam.coincontrol.service;
 import com.mergeteam.coincontrol.config.RegisterRequest;
 import com.mergeteam.coincontrol.entity.User;
 import com.mergeteam.coincontrol.repository.UserRepository;
+import com.mergeteam.coincontrol.request_model.AuthenticationRequest;
 import com.mergeteam.coincontrol.response_model.AuthenticationResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -40,7 +41,7 @@ public class AuthenticationService {
                 .build();
     }
 
-    public AuthenticationResponse authenticate(tech.helen.bookshop.requestmodels.AuthenticationRequest request) {
+    public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),

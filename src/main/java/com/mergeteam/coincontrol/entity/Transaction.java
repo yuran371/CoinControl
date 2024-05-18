@@ -22,8 +22,9 @@ public abstract class Transaction implements BaseEntity<UUID> {
     @Column(name = "id")
     @UuidGenerator
     private UUID id;
-    @Column(name = "wallet_id")
-    private UUID walletId;
+    @ManyToOne
+    @JoinColumn(name = "wallet_id")
+    private Wallet walletId;
     @Column(name = "amount")
     private BigDecimal amount;
     @Column(name = "date")

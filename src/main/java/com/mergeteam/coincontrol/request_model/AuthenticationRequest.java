@@ -1,5 +1,4 @@
-package tech.helen.bookshop.requestmodels;
-
+package com.mergeteam.coincontrol.request_model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
