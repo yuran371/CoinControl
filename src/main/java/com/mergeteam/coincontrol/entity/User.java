@@ -1,5 +1,6 @@
 package com.mergeteam.coincontrol.entity;
 
+import com.mergeteam.coincontrol.entity.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,6 +33,9 @@ public class User {
     private String password;
     @Column(name = "avatar_path")
     private String avatarPath;
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Wallet> wallets = new ArrayList<>();
 
