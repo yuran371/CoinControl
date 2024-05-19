@@ -28,7 +28,7 @@ public class SecurityConfiguration {
         http.
                 csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
-                        req -> req.requestMatchers("/public").permitAll()
+                        req -> req.requestMatchers("/registry").permitAll()
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
         return http.build();

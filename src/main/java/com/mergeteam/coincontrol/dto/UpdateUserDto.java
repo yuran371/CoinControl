@@ -1,6 +1,14 @@
 package com.mergeteam.coincontrol.dto;
 
-import java.util.UUID;
+import lombok.Builder;
+import lombok.Value;
 
-public record UpdateUserDto(String email, String name, String avatarPath) {
+@Value
+@Builder
+public class UpdateUserDto {
+
+    String email;
+    String name;
+    String avatarPath;
+
 }
