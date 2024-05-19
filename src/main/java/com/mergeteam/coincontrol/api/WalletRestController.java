@@ -23,8 +23,8 @@ public class WalletRestController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.OK)
-    private Wallet createWallet(@RequestBody WalletDto walletDto, @AuthenticationPrincipal UserDetails user) {
-        return walletService.createWallet(walletDto, user);
+    private Wallet createWallet(@RequestBody WalletDto walletDto, UUID userId) {
+        return walletService.createWallet(walletDto, userId);
     }
 
     @DeleteMapping("/{walletId}")

@@ -28,10 +28,11 @@ public class WalletService {
 
     private final IncomeTransactionRepository incomeTransactionRepository;
 
-    public Wallet createWallet(WalletDto walletDto, UserDetails user) {
-        Optional<User> needUser = userRepository.findByEmail(user.getUsername());
+    public Wallet createWallet(WalletDto walletDto, UUID userId) {
+        Optional<User> needUser = userRepository.findById(userId);
         return walletRepository.save(Wallet.builder()
                 .user(needUser.get())
+                .name(walletDto.name())
                 .balance(walletDto.balance())
                 .build());
     }

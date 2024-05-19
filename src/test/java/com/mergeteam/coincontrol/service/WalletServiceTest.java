@@ -67,7 +67,7 @@ class WalletServiceTest {
     @Test
     void testGetBalance() {
 
-        when(userRepository.save(new User())).thenReturn(new User());
+
 
         User user = userRepository.save(User.builder()
                 .email("test@test.com")
