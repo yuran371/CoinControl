@@ -1,7 +1,10 @@
 package com.mergeteam.coincontrol.service;
 
 import com.mergeteam.coincontrol.dto.ReadExpenseTransactionDto;
+import com.mergeteam.coincontrol.dto.ReadIncomeTransactionDto;
 import com.mergeteam.coincontrol.entity.Wallet;
+import com.mergeteam.coincontrol.mapper.ReadExpenseTransactionMapper;
+import com.mergeteam.coincontrol.mapper.ReadIncomeTransactionMapper;
 import com.mergeteam.coincontrol.repository.ExpenseTransactionRepository;
 import com.mergeteam.coincontrol.repository.IncomeTransactionRepository;
 import com.mergeteam.coincontrol.repository.WalletRepository;
@@ -24,13 +27,26 @@ public class TransactionService {
     private final ExpenseTransactionRepository expenseTransactionRepository;
     private final IncomeTransactionRepository incomeTransactionRepository;
     private final WalletRepository walletRepository;
+    private final ReadExpenseTransactionMapper readExpenseTransactionMapper = ReadExpenseTransactionMapper.INSTANCE;
+    private final ReadIncomeTransactionMapper readIncomeTransactionMapper = ReadIncomeTransactionMapper.INSTANCE;
 
-    public Page<ReadExpenseTransactionDto> readAllWalletsExpenseByUserId(UUID userId, Pageable pageable) {
+    public Page<ReadExpenseTransactionDto> readAllWalletsExpensesByUserId(UUID userId, Pageable pageable) {
         List<UUID> allWallets = walletRepository.findAllByUserId(userId).stream().map(Wallet::getId)
                 .toList();
         if (allWallets.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-        return null;
+        return expenseTransactionRepository.findAllByWalletsId(allWallets, pageable)
+                .map(readExpenseTransactionMapper::entityToDto);
+    }
+
+    public Page<ReadIncomeTransactionDto> readAllWalletsIncomesByUserId(UUID userId, Pageable pageable) {
+        List<UUID> allWallets = walletRepository.findAllByUserId(userId).stream().map(Wallet::getId)
+                .toList();
+        if (allWallets.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return incomeTransactionRepository.findAllByWalletsId(allWallets, pageable)
+                .map(readIncomeTransactionMapper::entityToDto);
     }
 }
