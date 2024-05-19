@@ -32,8 +32,8 @@ public class WalletService {
         Optional<User> needUser = userRepository.findById(userId);
         return walletRepository.save(Wallet.builder()
                 .user(needUser.get())
-                .name(walletDto.name())
-                .balance(walletDto.balance())
+                .name(walletDto.getName())
+                .balance(walletDto.getBalance())
                 .build());
     }
 
