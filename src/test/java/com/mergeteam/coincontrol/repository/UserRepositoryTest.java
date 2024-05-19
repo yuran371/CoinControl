@@ -35,6 +35,7 @@ public class UserRepositoryTest extends IntegrationBaseClass{
 
     private final UserRepository userRepository;
 
+    @Mock
     private User user;
     @BeforeEach
     void setUpUser() {
@@ -48,40 +49,23 @@ public class UserRepositoryTest extends IntegrationBaseClass{
 
     @Test
     public void testFindByEmail() throws DataAccessException {
-        // Given
+
         when(userRepository.findByEmail(anyString())).thenReturn(Optional.of(user));
 
-        // When
         Optional<User> foundUser = userRepository.findByEmail("test@example.com");
 
-        // Then
         assertThat(foundUser).isPresent();
         assertThat(foundUser.get().getEmail()).isEqualTo("test@example.com");
     }
 
     @Test
     public void testFindByEmailNotFound() throws DataAccessException {
-        // Given
+
         when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
 
-        // When
         Optional<User> foundUser = userRepository.findByEmail("nonexistent@example.com");
 
-        // Then
         assertThat(foundUser).isNotPresent();
     }
 
-//    @Test
-//    void checkPageable() {
-//        Pageable pageable = PageRequest.of(1,2, Sort.by("id"));
-//        Slice<User> slice = userRepository.findAllBy(pageable);
-//        slice.forEach((user -> System.out.println("ttt" + user.getId())));
-//
-//        while (slice.hasNext()) {
-//            slice = userRepository.findAllBy(slice.nextPageable());
-//            slice.forEach((user -> System.out.println("rrr"+user.getId())));
-//        }
-//    }
-
-//    @ParameterizedTest
 }

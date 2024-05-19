@@ -15,4 +15,5 @@ public class ReadExpenseTransactionDto {
     BigDecimal amount;
     OffsetDateTime date;
     ExpenseCategory category;
+
 }
