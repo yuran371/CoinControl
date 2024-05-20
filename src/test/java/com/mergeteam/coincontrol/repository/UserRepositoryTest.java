@@ -1,23 +1,14 @@
 package com.mergeteam.coincontrol.repository;
 
 import com.mergeteam.coincontrol.entity.User;
-import com.mergeteam.coincontrol.utils.IT;
+import com.mergeteam.coincontrol.utils.IntegrationBaseClass;
 import lombok.RequiredArgsConstructor;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.dao.DataAccessException;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
-import org.springframework.data.domain.Sort;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -31,7 +22,7 @@ import static org.mockito.Mockito.when;
  */
 @RequiredArgsConstructor
 @ExtendWith(MockitoExtension.class)
-public class UserRepositoryTest extends IntegrationBaseClass{
+public class UserRepositoryTest extends IntegrationBaseClass {
 
     private final UserRepository userRepository;
 

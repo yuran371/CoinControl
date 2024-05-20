@@ -14,9 +14,8 @@ public enum TransactionSort {
     DATE_DESC(Sort.by(Sort.Direction.DESC, "date")),
     CATEGORY_ASC(Sort.by(Sort.Direction.ASC, "category")),
     CATEGORY_DESC(Sort.by(Sort.Direction.DESC, "category")),
-    NAME_DESC(Sort.by(Sort.Direction.DESC, "name")),
-    NAME_ASC(Sort.by(Sort.Direction.ASC, "name"))
-    ;
+    NAME_DESC(Sort.by(Sort.Direction.DESC, "walletId.name")),
+    NAME_ASC(Sort.by(Sort.Direction.ASC, "walletId.name"));
 
     private final Sort sortValue;
 }

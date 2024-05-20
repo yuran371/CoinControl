@@ -8,10 +8,8 @@ import org.mapstruct.Mappings;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public abstract class ReadExpenseTransactionMapper {
-
-    public static ReadExpenseTransactionMapper INSTANCE = Mappers.getMapper(ReadExpenseTransactionMapper.class);
+@Mapper(componentModel = "spring", nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+public interface ReadExpenseTransactionMapper {
 
     @Mappings({
             @Mapping(target = "amount", source = "amount"),
@@ -19,6 +17,6 @@ public abstract class ReadExpenseTransactionMapper {
             @Mapping(target = "category", source = "category"),
             @Mapping(target = "walletName", source = "walletId.name"),
     })
-    public abstract ReadExpenseTransactionDto entityToDto(ExpenseTransaction expenseTransaction);
+    ReadExpenseTransactionDto entityToDto(ExpenseTransaction expenseTransaction);
 
 }

@@ -1,7 +1,8 @@
-package com.mergeteam.coincontrol.repository;
+package com.mergeteam.coincontrol.utils;
 
 import com.mergeteam.coincontrol.utils.IT;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.jdbc.Sql;
@@ -11,6 +12,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 @Sql({
         "classpath:base-ddl.sql"
 })
+@Tag(TestTags.IT)
 public abstract class IntegrationBaseClass {
 
 

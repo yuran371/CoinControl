@@ -10,10 +10,9 @@ import org.mapstruct.Mappings;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public abstract class ReadIncomeTransactionMapper {
+@Mapper(componentModel = "spring",nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+public interface ReadIncomeTransactionMapper {
 
-    public static ReadIncomeTransactionMapper INSTANCE = Mappers.getMapper(ReadIncomeTransactionMapper.class);
 
     @Mappings({
             @Mapping(target = "amount", source = "amount"),
@@ -21,6 +20,6 @@ public abstract class ReadIncomeTransactionMapper {
             @Mapping(target = "category", source = "category"),
             @Mapping(target = "walletName", source = "walletId.name"),
     })
-    public abstract ReadIncomeTransactionDto entityToDto(IncomeTransaction expenseTransaction);
+    ReadIncomeTransactionDto entityToDto(IncomeTransaction expenseTransaction);
 
 }

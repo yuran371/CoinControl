@@ -27,7 +27,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
 
-    CreateUserDtoMapper createUserDtoMapper = CreateUserDtoMapper.INSTANCE;
+    private final CreateUserDtoMapper createUserDtoMapper;
     ReadUserDtoMapper readUserDtoMapper = ReadUserDtoMapper.INSTANCE;
     private UserRepository userRepository;
 

@@ -1,6 +1,5 @@
 package com.mergeteam.coincontrol;
 
-import com.mergeteam.coincontrol.response.DataResponse;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;

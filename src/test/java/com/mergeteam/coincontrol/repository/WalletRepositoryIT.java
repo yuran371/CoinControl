@@ -1,16 +1,12 @@
 package com.mergeteam.coincontrol.repository;
 
-import com.mergeteam.coincontrol.api.sort.TransactionSort;
-import com.mergeteam.coincontrol.entity.ExpenseTransaction;
 import com.mergeteam.coincontrol.entity.Wallet;
+import com.mergeteam.coincontrol.utils.IntegrationBaseClass;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

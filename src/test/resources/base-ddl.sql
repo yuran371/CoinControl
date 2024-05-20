@@ -16,6 +16,8 @@ VALUES ('4c3e97a5-4bc1-4c58-bf83-7b4229d69603', '74dd2764-c0cc-4195-a906-b8edd78
        ('7aab80c5-dee3-45b3-8539-1c4515c18132', 'cc375d74-b34a-4386-865b-a7214919e26a', 150, NOW() - INTERVAL '7 day',
         'expense', 'GIFT', NULL),
        ('f96b4954-3880-4591-bf9f-8db390b0703b', 'cc375d74-b34a-4386-865b-a7214919e26a', 150, NOW() - INTERVAL '7 day',
-        'expense', 'SPORT', NULL);
+        'expense', 'SPORT', NULL),
+        ('aa3fa2e3-0b19-43f0-9540-39cb49c76698', '55646589-a2c7-456e-bed4-7c8b3d45e22c', 200, NOW() - INTERVAL '200 day',
+         'income', 'BUSINESS', NULL);
 
 

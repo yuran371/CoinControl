@@ -22,7 +22,7 @@ public abstract class Transaction implements BaseEntity<UUID> {
     @Column(name = "id")
     @UuidGenerator
     private UUID id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wallet_id")
     private Wallet walletId;
     @Column(name = "amount")

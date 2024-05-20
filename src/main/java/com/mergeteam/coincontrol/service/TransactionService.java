@@ -27,8 +27,8 @@ public class TransactionService {
     private final ExpenseTransactionRepository expenseTransactionRepository;
     private final IncomeTransactionRepository incomeTransactionRepository;
     private final WalletRepository walletRepository;
-    private final ReadExpenseTransactionMapper readExpenseTransactionMapper = ReadExpenseTransactionMapper.INSTANCE;
-    private final ReadIncomeTransactionMapper readIncomeTransactionMapper = ReadIncomeTransactionMapper.INSTANCE;
+    private final ReadExpenseTransactionMapper readExpenseTransactionMapper;
+    private final ReadIncomeTransactionMapper readIncomeTransactionMapper;
 
     public Page<ReadExpenseTransactionDto> readAllWalletsExpensesByUserId(UUID userId, Pageable pageable) {
         List<UUID> allWallets = walletRepository.findAllByUserId(userId).stream().map(Wallet::getId)
