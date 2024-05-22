@@ -1,4 +1,4 @@
-package com.mergeteam.coincontrol.utils;
+package com.mergeteam.coincontrol.integration;
 
 import com.mergeteam.coincontrol.CoinControlApplication;
 import org.springframework.boot.test.context.SpringBootTest;

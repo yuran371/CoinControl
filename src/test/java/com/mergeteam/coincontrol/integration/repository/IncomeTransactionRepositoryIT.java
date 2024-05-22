@@ -1,8 +1,9 @@
-package com.mergeteam.coincontrol.repository;
+package com.mergeteam.coincontrol.integration.repository;
 
 import com.mergeteam.coincontrol.api.sort.TransactionSort;
 import com.mergeteam.coincontrol.entity.IncomeTransaction;
-import com.mergeteam.coincontrol.utils.IntegrationBaseClass;
+import com.mergeteam.coincontrol.repository.IncomeTransactionRepository;
+import com.mergeteam.coincontrol.integration.IntegrationBaseClass;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;

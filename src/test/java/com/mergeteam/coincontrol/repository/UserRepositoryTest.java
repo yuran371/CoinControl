@@ -1,7 +1,7 @@
 package com.mergeteam.coincontrol.repository;
 
 import com.mergeteam.coincontrol.entity.User;
-import com.mergeteam.coincontrol.utils.IntegrationBaseClass;
+import com.mergeteam.coincontrol.integration.IntegrationBaseClass;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

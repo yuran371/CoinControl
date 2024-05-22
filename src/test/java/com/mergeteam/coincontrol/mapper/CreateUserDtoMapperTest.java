@@ -2,7 +2,7 @@ package com.mergeteam.coincontrol.mapper;
 
 import com.mergeteam.coincontrol.dto.CreateUserDto;
 import com.mergeteam.coincontrol.entity.User;
-import com.mergeteam.coincontrol.utils.IntegrationBaseClass;
+import com.mergeteam.coincontrol.integration.IntegrationBaseClass;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

@@ -1,6 +1,6 @@
-package com.mergeteam.coincontrol.utils;
+package com.mergeteam.coincontrol.integration;
 
-import com.mergeteam.coincontrol.utils.IT;
+import com.mergeteam.coincontrol.utils.TestTags;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.springframework.test.context.DynamicPropertyRegistry;

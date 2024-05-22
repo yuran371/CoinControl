@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class TransactionService {
 

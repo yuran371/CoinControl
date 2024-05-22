@@ -1,7 +1,8 @@
-package com.mergeteam.coincontrol.repository;
+package com.mergeteam.coincontrol.integration.repository;
 
 import com.mergeteam.coincontrol.entity.Wallet;
-import com.mergeteam.coincontrol.utils.IntegrationBaseClass;
+import com.mergeteam.coincontrol.repository.WalletRepository;
+import com.mergeteam.coincontrol.integration.IntegrationBaseClass;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,7 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RequiredArgsConstructor
-public class WalletRepositoryIT extends IntegrationBaseClass {
+class WalletRepositoryIT extends IntegrationBaseClass {
 
     private final WalletRepository walletRepository;
 
