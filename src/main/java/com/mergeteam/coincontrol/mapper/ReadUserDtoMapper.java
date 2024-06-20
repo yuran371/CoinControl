@@ -16,7 +16,7 @@ public abstract class ReadUserDtoMapper {
     @Mapping(target = "email", source = "email")
     @Mapping(target = "name", source = "name")
     @Mapping(target = "avatarPath", source = "avatarPath")
-    @Mapping(target = "role", source = "role")
+//    @Mapping(target = "role", source = "role")
     public abstract ReadUserDto entityToDto(User user);
 
 }

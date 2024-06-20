@@ -7,6 +7,10 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
+  security:
+    user:
+      name: admin
+      password: 123
 logging:
   level:
     root: info

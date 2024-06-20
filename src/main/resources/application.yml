@@ -8,3 +8,24 @@ spring:
     url: jdbc:postgresql://${DB_HOST:localhost}:${EXTERNAL_DB_PORT:5432}/coin
   jpa:
     show-sql: true
+
+#server:
+#  http2:
+#    enabled: true
+#  ssl:
+##    protocol: TLS
+#    key-store: classpath:ssl/keystore.p12
+#    key-store-password: password
+#    key-alias: mycert
+#    port: 8443
+#    key-store-type: PKCS12
+
+#springdoc:
+#  show-login-endpoint: true
+logging:
+  level:
+    org.springframework.security: trace
+    web: trace
+
+jwt:
+  cookie-token-key: '{"kty": "oct", "k": "OuX_DIOF1oBz8DKc7EJtOExC6oLUeQnotS6JsMps55c="}'

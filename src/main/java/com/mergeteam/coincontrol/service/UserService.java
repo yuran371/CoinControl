@@ -5,6 +5,7 @@ import com.mergeteam.coincontrol.dto.ReadUserDto;
 import com.mergeteam.coincontrol.dto.UpdateUserDto;
 import com.mergeteam.coincontrol.dto.WalletDto;
 import com.mergeteam.coincontrol.entity.User;
+//import com.mergeteam.coincontrol.mapper.CreateUserDtoMapper;
 import com.mergeteam.coincontrol.mapper.CreateUserDtoMapper;
 import com.mergeteam.coincontrol.mapper.ReadUserDtoMapper;
 import com.mergeteam.coincontrol.repository.UserRepository;
@@ -17,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,11 +27,11 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class UserService implements UserDetailsService {
+public class UserService {
 
     private final CreateUserDtoMapper createUserDtoMapper;
     ReadUserDtoMapper readUserDtoMapper = ReadUserDtoMapper.INSTANCE;
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public ReadUserDto findById(UUID id) {
         Optional<User> optionalUser = userRepository.findById(id);
@@ -37,10 +39,9 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(UserNotFoundException::new);
     }
 
-    public ReadUserDto save(CreateUserDto createUserDto) {
+    public void save(CreateUserDto createUserDto) {
         User user = createUserDtoMapper.dtoToEntity(createUserDto);
-        User savedUser = userRepository.save(user);
-        return readUserDtoMapper.entityToDto(savedUser);
+        userRepository.save(user);
     }
 
     public void deleteById(UUID id) {
@@ -75,7 +76,6 @@ public class UserService implements UserDetailsService {
             return ReadUserDto.builder()
                     .id(savedUser.getId())
                     .avatarPath(savedUser.getAvatarPath())
-                    .role(savedUser.getRole())
                     .email(savedUser.getEmail())
                     .name(savedUser.getName())
                     .build();
@@ -84,15 +84,9 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByEmail(username)
-                .map(user -> new org.springframework.security.core.userdetails.User(
-                        user.getEmail(),
-                        user.getPassword(),
-                        Collections.singleton(user.getRole())
-                ))
-                .orElseThrow(() -> new UsernameNotFoundException("Failed to retrieve user: " + username));
+    @Transactional
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
 }

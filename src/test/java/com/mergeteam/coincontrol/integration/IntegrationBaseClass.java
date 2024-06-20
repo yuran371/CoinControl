@@ -9,9 +9,9 @@ import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 @IT
-@Sql({
-        "classpath:base-ddl.sql"
-})
+//@Sql({
+//        "classpath:base-ddl.sql"
+//})
 @Tag(TestTags.IT)
 public abstract class IntegrationBaseClass {
 

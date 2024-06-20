@@ -1,7 +1,9 @@
 package com.mergeteam.coincontrol.repository;
 
+import com.mergeteam.coincontrol.entity.IncomeTransaction;
 import com.mergeteam.coincontrol.entity.User;
 import com.mergeteam.coincontrol.integration.IntegrationBaseClass;
+import com.mergeteam.coincontrol.security.tokenAuth.entities.UserRole;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,18 +27,19 @@ import static org.mockito.Mockito.when;
 public class UserRepositoryTest extends IntegrationBaseClass {
 
     private final UserRepository userRepository;
+    private final IncomeTransactionRepository incomeTransactionRepository;
 
     @Mock
     private User user;
-    @BeforeEach
-    void setUpUser() {
-        user = new User();
-        user.setId(UUID.randomUUID());
-        user.setEmail("test@example.com");
-        user.setName("Test User");
-        user.setPassword("password");
-        user.setAvatarPath("avatar/path");
-    }
+//    @BeforeEach
+//    void setUpUser() {
+//        user = new User();
+//        user.setId(UUID.randomUUID());
+//        user.setEmail("test@example.com");
+//        user.setName("Test User");
+//        user.setPassword("password");
+//        user.setAvatarPath("avatar/path");
+//    }
 
     @Test
     public void testFindByEmail() throws DataAccessException {
@@ -58,5 +61,19 @@ public class UserRepositoryTest extends IntegrationBaseClass {
 
         assertThat(foundUser).isNotPresent();
     }
+
+    @Test
+    public void testUserRolesEntityById() {
+        UUID id = UUID.fromString("e0ee31f6-6c9b-4987-8fba-246b059b3bee");
+        Optional<User> byId = userRepository.findById(id);
+        System.out.println(byId);
+    }
+    @Test
+    public void testIncomeTransactionRepository() {
+        UUID id = UUID.fromString("2378202d-4c06-4688-916c-0e09ae845d09");
+        Optional<IncomeTransaction> byId = incomeTransactionRepository.findById(id);
+        System.out.println(byId);
+    }
+
 
 }
