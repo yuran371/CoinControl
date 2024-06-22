@@ -1,6 +1,5 @@
 package com.mergeteam.coincontrol.dto;
 
-import com.mergeteam.coincontrol.entity.enums.Role;
 import lombok.Builder;
 import lombok.Value;
 
@@ -14,6 +13,6 @@ public class ReadUserDto {
     String email;
     String name;
     String avatarPath;
-    Role role;
+//    Role role;
 
 }

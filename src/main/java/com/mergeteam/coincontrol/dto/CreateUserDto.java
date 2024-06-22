@@ -1,8 +1,6 @@
 package com.mergeteam.coincontrol.dto;
 
-import com.mergeteam.coincontrol.entity.enums.Role;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Value;
@@ -17,7 +15,7 @@ public class CreateUserDto {
     String avatarPath;
     @NotNull
     String name;
-    @NotNull
-    Role role;
+//    @NotNull
+//    Role role;
 
 }

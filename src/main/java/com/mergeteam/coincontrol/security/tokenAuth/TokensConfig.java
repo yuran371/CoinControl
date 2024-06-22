@@ -1,7 +1,9 @@
 package com.mergeteam.coincontrol.security.tokenAuth;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mergeteam.coincontrol.security.tokenAuth.deserializers.TokenCookieJweStringDeserializer;
 import com.mergeteam.coincontrol.security.tokenAuth.serializers.TokenCookieJwtStringSerializer;
+import com.mergeteam.coincontrol.security.tokenAuth.utils.RequestAuthenticationConverter;
 import com.nimbusds.jose.KeyLengthException;
 import com.nimbusds.jose.crypto.DirectDecrypter;
 import com.nimbusds.jose.crypto.DirectEncrypter;

@@ -55,7 +55,7 @@ public class LoginRestControllerTest {
         String expectedJwtToken = "mockJwtToken";
         given(tokenCookieJwtStringSerializer.apply(any())).willReturn(expectedJwtToken);
         mockMvc.perform(post("/api/v1/login")
-                        .with(csrf())
+//                        .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(authRequest)))
                 .andExpect(status().isOk())

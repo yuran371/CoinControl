@@ -23,8 +23,7 @@ public class UserRole implements GrantedAuthority {
     @UuidGenerator
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "user_email")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_email", referencedColumnName = "email")
     private User user;
 

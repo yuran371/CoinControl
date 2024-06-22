@@ -1,7 +1,9 @@
 spring:
   datasource:
-    username: test
-    password: test
+    username: coin
+    password: password
+#    username: test
+#    password: test
   jpa:
     properties:
       hibernate:
@@ -16,5 +18,14 @@ logging:
     root: info
     org.hibernate.type.descriptor.JdbcBindingLogging: trace
     org.hibernate.orm.jdbc.bind: trace
-
+jwt:
+    cookie-token-key: '{"kty": "oct", "k": "OuX_DIOF1oBz8DKc7EJtOExC6oLUeQnotS6JsMps55c="}'
+#    cookie-token-key: '{
+#    "kty": "oct",
+#    "use": "enc",
+#    "kid": "G51GY6RqP6+HmGajq78NcNQrhaI=",
+#    "k": "zt16DfdljKhmRyU3HqC8PJVlh8-GOaH09kg-yyR3Xjo",
+#    "alg": "A256GCMKW"
+#}'
+#  cookie-token-key: 'OuX_DIOF1oBz8DKc7EJtOExC6oLUeQnotS6JsMps55c='  // Throw java.text.ParseException: Invalid JSON: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
 

@@ -1,6 +1,5 @@
 package com.mergeteam.coincontrol.entity;
 
-import com.mergeteam.coincontrol.entity.enums.Role;
 import com.mergeteam.coincontrol.security.tokenAuth.entities.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
@@ -44,19 +43,26 @@ public class User {
 
     @OneToMany(
             mappedBy = "user",
-            fetch = FetchType.EAGER,
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-            orphanRemoval = true)
-    private Set<UserRole> roles = new HashSet<>();
+            fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.ALL
+            },
+            orphanRemoval = true
+    )
+    private Set<UserRole> roles;
 
-//    public void addRole(UserRole userRole) {
-//        userRole.setUser(this);
-//        roles.add(userRole);
-//    }
+    public void addUserRole(UserRole userRole) {
+        roles.add(userRole);
+        userRole.setUser(this);
+    }
 
+    public void removeUserRole(UserRole userRole) {
+        roles.remove(userRole);
+        userRole.setUser(null);
+    }
 
     @Builder.Default
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Wallet> wallets = new ArrayList<>();
 
     @Override

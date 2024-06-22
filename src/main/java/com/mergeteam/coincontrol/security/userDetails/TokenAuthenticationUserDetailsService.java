@@ -1,6 +1,7 @@
 package com.mergeteam.coincontrol.security.userDetails;
 
 import com.mergeteam.coincontrol.repository.UserRepository;
+import com.mergeteam.coincontrol.security.tokenAuth.entities.Role;
 import com.mergeteam.coincontrol.security.tokenAuth.repositories.JwtTokensRepository;
 import com.mergeteam.coincontrol.security.tokenAuth.tokens.Token;
 import lombok.RequiredArgsConstructor;
@@ -28,10 +29,10 @@ public class TokenAuthenticationUserDetailsService implements AuthenticationUser
         if (preAuthenticatedAuthenticationToken.getPrincipal() instanceof Token token) {
             return new TokenAccountDetails(token.getSubject(),
                     "nopassword",
-                    true,
-                    true,
-//                    checkIfEnabled(token),  // TODO: реализовать
-//                    checkIfExpired(token),  // TODO: реализовать
+//                    true,
+//                    true,
+                    checkIfEnabled(token),
+                    checkIfTokenAlive(token),
                     true,
                     true,
                     token.getAuthorities()
@@ -43,20 +44,18 @@ public class TokenAuthenticationUserDetailsService implements AuthenticationUser
     }
 
     private boolean checkIfEnabled(Token token) {
-        return userRepository.fetchUserRoles(token.getSubject())
-                .stream()
-                .noneMatch(role -> token.getAuthorities()
-                        .contains(role))
-                && checkIfLoggedOut(token)  // TODO: returns a boolean value indicating whether the token is logged out.
-                ;
+        return !token.getAuthorities()
+                        .contains(Role.ROLE_BANNED)     // TODO: продумать логику бана
+                && checkIfTokenNotDeactivated(token);
+
     }
 
-    private boolean checkIfExpired(Token token) {
+    private boolean checkIfTokenAlive(Token token) {
         return token.getExpiresAt()
                 .isAfter(Instant.now());
     }
 
-    private boolean checkIfLoggedOut(Token token) {
+    private boolean checkIfTokenNotDeactivated(Token token) {
         return !jwtTokensRepository.checkIfTokenDeactivated(token.getId());
     }
 
