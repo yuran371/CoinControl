@@ -1,9 +1,9 @@
 spring:
   datasource:
-    username: coin
-    password: password
-#    username: test
-#    password: test
+#    username: coin
+#    password: password
+    username: test
+    password: test
   jpa:
     properties:
       hibernate:

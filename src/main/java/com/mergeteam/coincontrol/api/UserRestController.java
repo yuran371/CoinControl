@@ -1,6 +1,5 @@
 package com.mergeteam.coincontrol.api;
 
-import com.mergeteam.coincontrol.dto.CreateUserDto;
 import com.mergeteam.coincontrol.dto.ReadUserDto;
 import com.mergeteam.coincontrol.dto.UpdateUserDto;
 import com.mergeteam.coincontrol.dto.WalletDto;
@@ -10,9 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

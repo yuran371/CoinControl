@@ -4,7 +4,6 @@ import com.mergeteam.coincontrol.CoinControlApplication;
 import com.mergeteam.coincontrol.security.tokenAuth.entities.Role;
 import com.mergeteam.coincontrol.security.tokenAuth.factories.TokenCookieFactory;
 import com.mergeteam.coincontrol.security.tokenAuth.tokens.Token;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -18,7 +17,6 @@ import java.time.Duration;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 @ActiveProfiles("test")
@@ -30,7 +28,7 @@ class TokenCookieFactoryTest {
     private TokenCookieFactory tokenCookieFactory;
 
     @Test
-    void testapply() {
+    void testApply() {
         String username = "testuser";
         String password = "testpassword";
         List<SimpleGrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(Role.ROLE_USER.getRoleName()));

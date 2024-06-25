@@ -47,4 +47,10 @@ public class TokensConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+//    TODO: реализовать редирект в случае успешной аутентификации кастомного логина
+//    @Bean
+//    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+//        return new CustomAuthenticationSuccessHandler();
+//    }
+
 }

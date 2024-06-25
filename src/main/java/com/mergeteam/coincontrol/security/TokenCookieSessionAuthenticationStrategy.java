@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.session.SessionAuthenticationException;
@@ -22,7 +23,7 @@ import java.io.IOException;
 @Component
 public class TokenCookieSessionAuthenticationStrategy implements SessionAuthenticationStrategy {
 
-    public static final String AUTH_COOKIE_NAME = "__Host-auth-token";
+    public static final String AUTH_COOKIE_NAME = "__Host";
 
     private final TokenCookieFactory tokenCookieFactory;
     private final TokenCookieJwtStringSerializer tokenJwtStringSerializer;

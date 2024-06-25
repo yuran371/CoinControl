@@ -29,7 +29,6 @@ public class LoginFilter extends OncePerRequestFilter {
     private static final String SUCCESSFUL_AUTHENTICATION_MESSAGE = "{\"message\": \"Authentication successful\"}";
 
     private final RequestMatcher requestMatcher = new AntPathRequestMatcher("/api/v1/login", HttpMethod.POST.name());
-    private final RequestMatcher requestMatcher2 = new AntPathRequestMatcher("/");
     private final SecurityContextHolderStrategy securityContextHolderStrategy =
             SecurityContextHolder.getContextHolderStrategy();
     private final RequestAuthenticationConverter requestAuthenticationConverter;
@@ -41,7 +40,7 @@ public class LoginFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         this.logger.info("cookie sign in filter called");
-        if (this.requestMatcher2.matches(request)) {
+        if (this.requestMatcher.matches(request)) {
             UsernamePasswordAuthenticationToken authenticationToken =
                     requestAuthenticationConverter.requestRestToAuthenticationToken(request);
             try {

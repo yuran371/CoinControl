@@ -1,5 +1,6 @@
 package com.mergeteam.coincontrol.security.tokenAuth.utils;
 
+import com.mergeteam.coincontrol.security.TokenCookieSessionAuthenticationStrategy;
 import com.mergeteam.coincontrol.security.tokenAuth.deserializers.TokenCookieJweStringDeserializer;
 import com.mergeteam.coincontrol.security.tokenAuth.tokens.CookieToken;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +22,7 @@ public class TokenCookieAuthenticationConverter implements AuthenticationConvert
     public Authentication convert(HttpServletRequest request) {
         if (request.getCookies() != null) {
             return Stream.of(request.getCookies())
-                    .filter(cookie -> cookie.getName().equals("__Host-auth-token"))
+                    .filter(cookie -> cookie.getName().equals(TokenCookieSessionAuthenticationStrategy.AUTH_COOKIE_NAME))
                     .findFirst()
                     .map(cookie -> {
                         CookieToken token = this.tokenCookieStringDeserializer.deserialize(cookie.getValue());

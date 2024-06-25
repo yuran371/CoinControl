@@ -1,5 +1,5 @@
-CREATE TABLE IF NOT EXISTS "deactivated_token"
+CREATE TABLE IF NOT EXISTS coin_repository.deactivated_token
 (
-    id         SERIAL    NOT NULL PRIMARY KEY,
+    id         UUID PRIMARY KEY,
     keep_until timestamp NOT NULL
 );

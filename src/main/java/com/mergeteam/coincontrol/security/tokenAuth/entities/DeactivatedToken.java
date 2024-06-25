@@ -17,7 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "deactivated_token")
+@Table(name = "deactivated_token", schema = "coin_repository", catalog = "coin")
 public class DeactivatedToken {
     @Id
     @Column(name = "id")
