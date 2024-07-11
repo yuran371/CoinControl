@@ -2,7 +2,7 @@ package com.mergeteam.coincontrol.security.tokenAuth.entities;
 
 public enum Role {
     ROLE_USER("ROLE_USER"),
-
+    ROLE_ADMIN("ROLE_ADMIN"),
     ROLE_BANNED("ROLE_BANNED"),
     ROLE_UNACTIVATED("ROLE_UNACTIVATED"),
 

@@ -23,7 +23,7 @@ import java.io.IOException;
 @Component
 public class TokenCookieSessionAuthenticationStrategy implements SessionAuthenticationStrategy {
 
-    public static final String AUTH_COOKIE_NAME = "__Host";
+    public static final String AUTH_COOKIE_NAME = "__Host-auth";
 
     private final TokenCookieFactory tokenCookieFactory;
     private final TokenCookieJwtStringSerializer tokenJwtStringSerializer;

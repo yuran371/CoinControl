@@ -7,9 +7,11 @@ import org.mapstruct.Mapping;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper(nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public abstract class ReadUserDtoMapper {
-    public static final ReadUserDtoMapper INSTANCE = Mappers.getMapper(ReadUserDtoMapper.class);
+public abstract class ReadUserDtoMapperList {
+    public static final ReadUserDtoMapperList INSTANCE = Mappers.getMapper(ReadUserDtoMapperList.class);
 
 
     @Mapping(target = "id", source = "id")
@@ -17,6 +19,6 @@ public abstract class ReadUserDtoMapper {
     @Mapping(target = "name", source = "name")
     @Mapping(target = "avatarPath", source = "avatarPath")
     @Mapping(target = "roles", source = "roles")
-    public abstract ReadUserDto entityToDto(User user);
+    public abstract List<ReadUserDto> map(List<User> user);
 
 }

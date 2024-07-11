@@ -11,12 +11,8 @@ import java.util.UUID;
 
 @Value
 @Builder
-public class ReadUserDto {
+public class ReadUserRolesDto {
 
-    UUID id;
-    String email;
-    String name;
-    String avatarPath;
-    Set<ReadUserRolesDto> roles;
+    Role role;
 
 }

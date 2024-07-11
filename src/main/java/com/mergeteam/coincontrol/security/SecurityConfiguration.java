@@ -1,6 +1,7 @@
 package com.mergeteam.coincontrol.security;
 
 import com.mergeteam.coincontrol.security.tokenAuth.TokenCookieAuthenticationConfigurer;
+import com.mergeteam.coincontrol.security.tokenAuth.entities.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,9 +32,11 @@ public class SecurityConfiguration {        // implements WebMvcConfigurer
 //                .formLogin(Customizer.withDefaults())
 //                .addFilterAfter(new GetCsrfTokenFilter(), ExceptionTranslationFilter.class)
                 .authorizeHttpRequests(authorizeHttpReq -> {
-                    authorizeHttpReq
-                                    .requestMatchers("/api/v1/login", "/v3/api-docs/**", "/swagger-ui/**", "/api/v1/getCookieTest")
+                            authorizeHttpReq
+                                    .requestMatchers("/api/v1/login", "/v3/api-docs/**", "/swagger-ui/**", "/api/v1" +
+                                            "/getCookieTest")
                                     .permitAll()
+                                    .requestMatchers("/api/v1/admin").hasAnyAuthority(Role.ROLE_ADMIN.getRoleName())
 //                                .anyRequest().permitAll())
 //                            authorizeHttpReq
                                     .anyRequest()
@@ -69,7 +72,8 @@ public class SecurityConfiguration {        // implements WebMvcConfigurer
 ////                .addFilterAfter(new GetCsrfTokenFilter(), ExceptionTranslationFilter.class)
 //                .authorizeHttpRequests(authorizeHttpReq ->
 //                        authorizeHttpReq
-//                                .requestMatchers("/login", "/api/v1/login", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
+//                                .requestMatchers("/login", "/api/v1/login", "/v3/api-docs/**", "/swagger-ui/**")
+//                                .permitAll()
 //
 ////                                .requestMatchers("/error", "index.html").permitAll()
 ////                                .anyRequest().permitAll())

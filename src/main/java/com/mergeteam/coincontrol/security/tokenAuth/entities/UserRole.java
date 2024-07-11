@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.UUID;
 
 @Entity
-@ToString
+@ToString(exclude = {"user"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

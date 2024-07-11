@@ -8,7 +8,9 @@ import com.mergeteam.coincontrol.entity.User;
 //import com.mergeteam.coincontrol.mapper.CreateUserDtoMapper;
 import com.mergeteam.coincontrol.mapper.CreateUserDtoMapper;
 import com.mergeteam.coincontrol.mapper.ReadUserDtoMapper;
+import com.mergeteam.coincontrol.mapper.ReadUserDtoMapperList;
 import com.mergeteam.coincontrol.repository.UserRepository;
+import com.mergeteam.coincontrol.security.tokenAuth.entities.Role;
 import com.mergeteam.coincontrol.util.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -31,7 +33,12 @@ public class UserService {
 
     private final CreateUserDtoMapper createUserDtoMapper;
     ReadUserDtoMapper readUserDtoMapper = ReadUserDtoMapper.INSTANCE;
+    ReadUserDtoMapperList readUserDtoMapperList = ReadUserDtoMapperList.INSTANCE;
     private final UserRepository userRepository;
+
+    public List<ReadUserDto> findByRole(Role role) {
+        return readUserDtoMapperList.map(userRepository.findDistinctByRolesRole(role));
+    }
 
     public ReadUserDto findById(UUID id) {
         Optional<User> optionalUser = userRepository.findById(id);

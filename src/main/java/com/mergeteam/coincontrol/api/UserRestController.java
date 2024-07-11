@@ -3,6 +3,7 @@ package com.mergeteam.coincontrol.api;
 import com.mergeteam.coincontrol.dto.ReadUserDto;
 import com.mergeteam.coincontrol.dto.UpdateUserDto;
 import com.mergeteam.coincontrol.dto.WalletDto;
+import com.mergeteam.coincontrol.security.tokenAuth.entities.Role;
 import com.mergeteam.coincontrol.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,16 +15,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class UserRestController {
 
-    private UserService userService;
+    private final UserService userService;
 
-    @GetMapping("g")
+    @GetMapping("/g")
     public ResponseEntity<Greeting> getGreeting(@AuthenticationPrincipal UserDetails user) {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
@@ -31,6 +33,13 @@ public class UserRestController {
     }
 
     public record Greeting(String greeting) {
+    }
+
+    @GetMapping("/admin/{role}")
+    public ResponseEntity<List<ReadUserDto>> getAdmin(@PathVariable("role") Role role) {
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(userService.findByRole(role));
     }
 
     @GetMapping("/{id}/wallets")
